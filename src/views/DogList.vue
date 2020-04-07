@@ -2,11 +2,8 @@
   <div>
     <header>Dog List</header>
       <div>
-        <ol v-for="(dog, idx) in dogs" :key="idx">
-          <li class="pointer">{{dog}}</li>
-        <div v-if="showImagesToggle">
-          <p>Paco</p>
-        </div>
+        <ol>
+          <li id="breed" class="pointer" @click ="getInner" v-for="(dog, idx) in dogs" :key="idx">{{dog}}</li>
         </ol>
       </div>
   </div>
@@ -14,22 +11,27 @@
 
 <script>
 import apiDog from '@/store/apiDog.js'
+// import Breed from '@/views/Breed.vue'
+
 
 export default {
   name:'DogList',
   data () {
     return {
       dogs:{},
-      showImagesToggle: false
+      showImagesToggle: false,
+      
     }
   },
+  // components:{Breed},
   methods: {
    async callDogList() {
       const list = await apiDog.methods.gettingDogList()
       this.dogs = list
     },
-    showImages() {
-     this.showImagesToggle = !this.showImagesToggle
+    getInner() {
+     let breedName = document.getElementById('breed').innerHTML
+     console.log(breedName)
     }
   },
   watch: {

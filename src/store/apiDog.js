@@ -8,9 +8,9 @@ const apiDog = {
                 const response = await axios.get('https://dog.ceo/api/breeds/list/all')
                 const list = response.data.message
 
-                
+                // console.log(Object.values(list[0]))
 
-                console.log(response)
+                console.log(list)
                 return Object.keys(list)
             }
             catch (error) {
@@ -22,21 +22,6 @@ const apiDog = {
         }
     }
 }
-
-
-// let subBreeds = []
-//       for (const name of state.breedsNames) {
-//         if (state.breeds[name].length > 0) {
-//           for (let i = 0; i < state.breeds[name].length; i++) {
-//             subBreeds.push('' + name + ' ' + state.breeds[name][i])
-//           }
-//         } else {
-//           subBreeds.push(name)
-//         }
-//       }
-//       subBreeds.splice(127, 1)
-//       // console.log(subBreeds.length)
-//       return subBreeds
 
 export default apiDog
 
