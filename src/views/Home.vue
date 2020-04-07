@@ -1,18 +1,22 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <header>
+      <p>Welcome to my Store</p>
+    </header>
+    <main>
+      <p>Please press the button to see our cute puppies</p>
+      <button @click="toDogList">Press to see</button>
+    </main>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
+  methods: {
+    toDogList () {
+      this.$router.push('dogList')
+    }
   }
 }
 </script>
