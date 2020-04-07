@@ -1,16 +1,14 @@
 <template>
   <div>
     <header>Dog List</header>
-    <main>
-      <section>
-        <ul v-for="(dog, idx) in dogs" :key="idx">
-          <li class="pointer" @click="showImages">{{dog}}</li>
+      <div>
+        <ol v-for="(dog, idx) in dogs" :key="idx">
+          <li class="pointer">{{dog}}</li>
         <div v-if="showImagesToggle">
           <p>Paco</p>
         </div>
-        </ul>
-      </section>
-    </main>
+        </ol>
+      </div>
   </div>
 </template>
 

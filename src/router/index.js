@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home.vue'
 import DogList from '@/views/DogList.vue'
-import Breed from '@/components/Breed.vue'
+import Breed from '@/views/Breed.vue'
 
 Vue.use(VueRouter)
 
