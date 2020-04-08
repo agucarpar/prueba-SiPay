@@ -63,7 +63,8 @@ export default {
   button {
    margin-top: 25px;
    border-radius:10%;
-   font-size: 21px;
+   border: 1px solid black;
+   font-size: 15px;
    padding: 3px;
   }
   .button-group {

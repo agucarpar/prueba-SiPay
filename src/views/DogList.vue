@@ -46,12 +46,13 @@ export default {
 
 <style scoped>
 .wrapper {
-    width: 100vw;
-    height: 100vw;
     padding: 20px;
+    width: 100vw;
+    height: 100vh;
     box-sizing: border-box;
     background-image: url('../../public/dogList-bg.jpg');
     background-repeat: no-repeat;
+    background-size: cover;
 }
 header {
   color: white;
