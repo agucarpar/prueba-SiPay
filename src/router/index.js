@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '@/views/Home.vue'
-import DogList from '@/views/DogList.vue'
-import Breed from '@/views/Breed.vue'
+// import Home from ''
+// import DogList from ''
+// import Breed from ''
 
 Vue.use(VueRouter)
 
@@ -10,17 +10,17 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: () => import("@/views/Home.vue")
   },
   {
     path:'/dogList',
     name: 'dogList',
-    component: DogList
+    component: () => import("@/views/DogList.vue")
   },
   {
     path:'/breed',
     name: 'breed',
-    component: Breed
+    component: () => import("@/views/Breed.vue")
   }
 ]
 
