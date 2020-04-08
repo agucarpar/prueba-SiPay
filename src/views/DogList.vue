@@ -1,17 +1,15 @@
 <template>
   <div>
-    <header>Dog List</header>
+    <header> <p>Dog List</p> </header>
       <div>
-        <ol>
-          <li id="breed" class="pointer" @click ="getInner" v-for="(dog, idx) in dogs" :key="idx">{{dog}}</li>
-        </ol>
+          <Breed v-for="(dog, key) in dogs"  :dog="dog" :key="key"></Breed>
       </div>
   </div>
 </template>
 
 <script>
 import apiDog from '@/store/apiDog.js'
-// import Breed from '@/views/Breed.vue'
+import Breed from '@/views/Breed.vue'
 
 
 export default {
@@ -20,19 +18,14 @@ export default {
     return {
       dogs:{},
       showImagesToggle: false,
-      
     }
   },
-  // components:{Breed},
+  components:{Breed},
   methods: {
    async callDogList() {
       const list = await apiDog.methods.gettingDogList()
       this.dogs = list
     },
-    getInner() {
-     let breedName = document.getElementById('breed').innerHTML
-     console.log(breedName)
-    }
   },
   watch: {
     showImagesToggle () {
@@ -45,11 +38,3 @@ export default {
 }
 </script>
 
-<style scoped>
-  .pointer {
-    cursor:pointer;
-  }
-  .pointer:hover {
-    color:blue
-  }
-</style>
