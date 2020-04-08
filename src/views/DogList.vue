@@ -3,7 +3,7 @@
       <header> 
           <h1 class="title">OUR LIST OF BREEDS</h1> 
           <label for="searchBar">Please, type here for a easy search:</label>
-          <input id="searchBar" class="search" type="text" placeholder="Search your favourite breed here" v-model="query">
+          <input id="searchBar" class="search" type="search" placeholder="Search your favourite breed here" v-model="query">
       </header>
       <main class="main">
           <Breed v-for="(dog, key) in filteredList"  :dog="dog" :key="key"></Breed>
