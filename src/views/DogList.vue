@@ -50,7 +50,7 @@ export default {
     width: 100vw;
     height: 100vh;
     box-sizing: border-box;
-    background-image: url('../../public/dogList-bg.jpg');
+    /* background-image: url('../../public/dogList-bg.jpg'); */
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -72,6 +72,6 @@ header {
   display: flex;
   flex-wrap: wrap;
   border-radius: 4%;
-  background-image: url('../../public/wrapr-bg.jpg')
+  /* background-image: url('../../public/wrapr-bg.jpg') */
 }
 </style>
