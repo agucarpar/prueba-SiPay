@@ -2,7 +2,8 @@
   <div>
     <header> <p>Dog List</p> </header>
       <div>
-          <Breed v-for="(dog, key) in dogs"  :dog="dog" :key="key"></Breed>
+          <input type="search" placeholder="Search your favourite breed here" v-model="query">
+          <Breed v-for="(dog, key) in filteredList"  :dog="dog" :key="key"></Breed>
       </div>
   </div>
 </template>
@@ -16,22 +17,24 @@ export default {
   name:'DogList',
   data () {
     return {
-      dogs:{},
+      dogsList:[],
+      query:'',
       showImagesToggle: false,
     }
   },
   components:{Breed},
   methods: {
    async callDogList() {
-      const list = await apiDog.methods.gettingDogList()
-      this.dogs = list
+       this.dogsList = await apiDog.methods.gettingDogList()
     },
   },
-  watch: {
-    showImagesToggle () {
-     if(this.showImagesToggle) apiDog.methods.getBreedImages('akita')
+  computed:{
+    filteredList () {
+      return this.dogsList.filter(dog=>{
+        return dog.includes(this.query)
+        })
     }
-  },
+  }, 
   created () {
     this.callDogList()
   }
