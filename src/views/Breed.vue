@@ -1,8 +1,8 @@
 <template>
 <div>
-    <p id="breed" class="pointer" @click ="getInner(dog)">{{dog}}</p>
-    <div v-if="showImagesToggle" >
-      <img src="" alt="">
+  <p id="breed" class="pointer" @click ="getInner(dog)">{{dog}}</p>
+    <div v-if="showImagesToggle" id="arrayPictures" >
+      <img v-for="(pic, key) in arrayPictures" :src="pic" alt="" :key="key" width="200" height="150">
     </div>
 </div>
 </template>
@@ -14,28 +14,22 @@ export default {
   name:'Breed',
   props:['dog'],
   data() {
-      return {
-        query:'',
-        showImagesToggle: false,
-        breed: '',
-        arrayPictures: []
-      }
+    return {
+      query:'',
+      showImagesToggle: false,
+      arrayPictures: []
+    }
   },
   methods: {
    getInner(dog) {
-     this.showImagesToggle = !this.showImagesToggle
-     this.breed = document.getElementById('breed').innerText
-    console.log(dog)
+      this.showImagesToggle = !this.showImagesToggle
+      if(this.showImagesToggle) this.callingBreedImages(dog)
+      console.log('dog:', dog)
     },
-    async  callingBreedImages () {
-       this.arrayPictures = await apiDog.methods.getBreedImages(this.breed)
-    }
+    async  callingBreedImages (breed) {
+      this.arrayPictures = await apiDog.methods.getBreedImages(breed)
+    },
   },
-  watch: {
-    showImagesToggle () {
-      if(this.showImagesToggle) this.callingBreedImages()
-     },
-   },
 }
 </script>
 <style scoped>

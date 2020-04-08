@@ -16,6 +16,7 @@ const apiDog = {
         },
         async getBreedImages (breed) {
             try {
+                console.log('breed APIDOG:', breed)
                const response = await axios.get(`https://dog.ceo/api/breed/${breed}/images`)
                const list = response.data.message
                return list.splice(0, 10)
