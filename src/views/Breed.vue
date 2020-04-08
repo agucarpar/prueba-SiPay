@@ -1,9 +1,13 @@
 <template>
 <div>
-  <p id="breed" class="pointer" @click ="getInner(dog)">{{dog}}</p>
+  <main class="wrapper">
+    <p id="breed" class="pointer" @click ="callImages(dog)">{{dog}}</p>
     <div v-if="showImagesToggle" id="arrayPictures" >
       <img v-for="(pic, key) in arrayPictures" :src="pic" alt="" :key="key" width="200" height="150">
+      <button @click="modifySplice(dog, 'incre')">Next 10 Pictures</button>
+      <button @click="modifySplice(dog)">Previus 10 Pictures</button>
     </div>
+  </main>
 </div>
 </template>
 
@@ -18,23 +22,31 @@ export default {
       query:'',
       showImagesToggle: false,
       arrayPictures: [],
-      initialSplice: 0
+      initialSplice: 0,
+      showNextButton: true
     }
   },
   methods: {
-   getInner(dog) {
+   callImages(dog) {
       this.showImagesToggle = !this.showImagesToggle
       if(this.showImagesToggle) this.callingBreedImages(dog)
-      console.log('dog:', dog)
     },
     async  callingBreedImages (breed) {
       let listPictures = await apiDog.methods.getBreedImages(breed)
       this.arrayPictures = listPictures.lenght < 10 ? listPictures : listPictures.splice(this.initialSplice, 10)
     },
-  },
+    modifySplice (breed, order) {
+      order ? this.initialSplice += 10 : this.initialSplice -= 10
+      this.callingBreedImages(breed)
+    },
+    
+  }
 }
 </script>
 <style scoped>
+  .wrapper {
+    padding: 20px
+  }
   .pointer {
     cursor:pointer;
   }
