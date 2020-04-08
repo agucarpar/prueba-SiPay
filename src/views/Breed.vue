@@ -17,7 +17,8 @@ export default {
     return {
       query:'',
       showImagesToggle: false,
-      arrayPictures: []
+      arrayPictures: [],
+      initialSplice: 0
     }
   },
   methods: {
@@ -27,7 +28,8 @@ export default {
       console.log('dog:', dog)
     },
     async  callingBreedImages (breed) {
-      this.arrayPictures = await apiDog.methods.getBreedImages(breed)
+      let listPictures = await apiDog.methods.getBreedImages(breed)
+      this.arrayPictures = listPictures.lenght < 10 ? listPictures : listPictures.splice(this.initialSplice, 10)
     },
   },
 }

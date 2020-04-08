@@ -31,7 +31,6 @@ export default {
   computed:{
     filteredList () {
       const query = this.query.toLowerCase()
-      console.log(query)
       return this.dogsList.filter(dog=>{
         return dog.includes(query)
         })
