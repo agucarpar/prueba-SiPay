@@ -1,13 +1,14 @@
 <template>
-  <div >
     <div class="wrapper">
-      <header> <h1 class="title">OUR LIST OF BREEDS</h1> </header>
-      <div>
-        <input type="search" placeholder="Search your favourite breed here" v-model="query">
-        <Breed v-for="(dog, key) in filteredList"  :dog="dog" :key="key"></Breed>
-      </div>
+      <header> 
+          <h1 class="title">OUR LIST OF BREEDS</h1> 
+          <label for="searchBar">Please, type here for a easy search:</label>
+          <input id="searchBar" class="search" type="text" placeholder="Search your favourite breed here" v-model="query">
+      </header>
+      <main class="main">
+          <Breed v-for="(dog, key) in filteredList"  :dog="dog" :key="key"></Breed>
+      </main>
     </div>
-  </div>
 </template>
 
 <script>
@@ -45,10 +46,31 @@ export default {
 
 <style scoped>
 .wrapper {
-    padding: 20px
+    width: 100vw;
+    height: 100vw;
+    padding: 20px;
+    box-sizing: border-box;
+    background-image: url('../../public/dogList-bg.jpg');
+    background-repeat: no-repeat;
+}
+header {
+  color: white;
 }
 .title{
-  font-size: 70px
+  font-size: 70px;
 }
-
+.search {
+  margin-top: 15px;
+} 
+.search:focus {
+  background: rgba(211, 211, 211, 0.63);
+}
+.main {
+  margin: 10px;
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 4%;
+  background-image: url('../../public/wrapr-bg.jpg')
+}
 </style>

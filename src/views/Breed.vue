@@ -1,11 +1,13 @@
 <template>
 <div>
   <main class="wrapper">
-    <p id="breed" class="pointer" @click ="callImages(dog)">{{dog}}</p>
+    <p id="breed" class="breed" @click ="callImages(dog)">{{dog}}</p>
     <div v-if="showImagesToggle" id="arrayPictures" >
       <img v-for="(pic, key) in arrayPictures" :src="pic" alt="" :key="key" width="200" height="150">
-      <button @click="modifySplice(dog, 'incre')">Next 10 Pictures</button>
-      <button @click="modifySplice(dog)">Previus 10 Pictures</button>
+      <div class="button-group">
+        <button @click="modifySplice(dog, 'incre')">Next 10 Pictures</button>
+        <button @click="modifySplice(dog)">Previus 10 Pictures</button>
+      </div>
     </div>
   </main>
 </div>
@@ -45,12 +47,27 @@ export default {
 </script>
 <style scoped>
   .wrapper {
-    padding: 20px
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10%;
+    border: 1px solid rgb(212, 0, 255);
+    background-color: khaki;
   }
-  .pointer {
+  .wrapper:hover {
+    color:blue;
     cursor:pointer;
   }
-  .pointer:hover {
-    color:blue
+  img {
+    margin:5px
+  }
+  button {
+   margin-top: 25px;
+   border-radius:10%;
+   font-size: 21px;
+   padding: 3px;
+  }
+  .button-group {
+    display: flex;
+    justify-content: space-evenly;
   }
 </style>

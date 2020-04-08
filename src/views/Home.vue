@@ -26,6 +26,7 @@ export default {
     padding: 20px;
     height: 100vh;
     width: 100vw;
+    box-sizing: border-box;
     background-image: url('../../public/background.jpg');
     background-size: cover;
   }
